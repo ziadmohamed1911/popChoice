@@ -1,5 +1,10 @@
 {
+  "type": "module",
+  "scripts": {
+    "build": "echo \"No build step\""
+  },
   "dependencies": {
+    "@supabase/supabase-js": "^2.118.0",
     "openai": "^7.45.1"
   }
 }
