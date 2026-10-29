@@ -1,3 +1,7 @@
 {
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "functions": {
+    "api/search.js": { "maxDuration": 30 }
+  }
 }
+

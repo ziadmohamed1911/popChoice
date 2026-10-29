@@ -14,7 +14,6 @@ searchBtn.addEventListener("click", (e) => {
   const tone = toneInput.value
   const searchQuery = `${favMovie}, ${eraPreference}, ${tone}`
   handleSearch(searchQuery)
-  questionsForm.reset()
 })
 
 
@@ -55,6 +54,7 @@ function renderResult(html){
   document.getElementById("reset-btn").addEventListener("click", () =>{
   questionsPage.classList.remove("hidden")
   answerPage.classList.add("hidden")
+  questionsForm.reset()
 })
 
 }
