@@ -38,7 +38,7 @@
                     new or a classic?</label>
                     <textarea 
                     placeholder="I want to watch movies that were released after 1990"
-                    id="release"></textarea>
+                    id="era-preference"></textarea>
                 </div>
 
                 <div class="question"> 
@@ -48,21 +48,18 @@
                     </label>
                     <textarea 
                     placeholder="I want to watch something stupid and fun"
-                    id="desire"></textarea>
+                    id="tone"></textarea>
                 </div>
 
                 <button type="submit" id="submit-btn" class="btn">Let's Go</button>
             </form>
         </section>
-        <section class="container hidden" id="answer-page">
-            <div class="movie">
-                <h2 class="movie-title">School of Rock (2009)</h2>
-                <p class="movie-text">A fun and stupid movie about a wannabe rocker turned fraud substitute teacher forming a rock band with his students to win the Battle of the Bands</p>
-            </div>
-            <button class="btn" id="reset-btn">Go Again</button>
+        <section class="container hidden" id="answer-page"> 
+            
         </section>
     </main>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
     <script src="index.js" type="module"></script>
 </body>
 </html>

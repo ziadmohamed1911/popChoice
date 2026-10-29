@@ -1,4 +1,66 @@
 const textAreas = document.querySelectorAll("textarea")
+const favMovieInput = document.getElementById("fav-movie")
+const eraPreferenceInput = document.getElementById("era-preference")
+const toneInput = document.getElementById("tone")
+const searchBtn = document.getElementById("submit-btn")
+const questionsPage= document.getElementById("form-page")
+const answerPage = document.getElementById("answer-page")
+const questionsForm = document.querySelector(".questions")
+
+searchBtn.addEventListener("click", (e) => {
+  e.preventDefault()
+  const favMovie= favMovieInput.value
+  const eraPreference = eraPreferenceInput.value
+  const tone = toneInput.value
+  const searchQuery = `${favMovie}, ${eraPreference}, ${tone}`
+  handleSearch(searchQuery)
+  questionsForm.reset()
+})
+
+
+async function handleSearch(searchQuery){
+  
+  try{
+  searchBtn.textContent = "Searching...."
+  const response = await fetch("/api/search", {
+    method: "POST",
+    headers: { "Content-Type": "application/json"},
+    body: JSON.stringify({searchQuery: searchQuery})
+  })
+  const data = await response.json()
+
+  const safeHtml = DOMPurify.sanitize(data)
+  renderResult(safeHtml)
+  }catch(err){
+
+    console.error(err)
+
+  }finally{
+
+    searchBtn.textContent = "Let's Go"
+
+  }
+ 
+}
+
+function renderResult(html){
+  questionsPage.classList.add("hidden")
+  answerPage.classList.remove("hidden")
+  answerPage.innerHTML=`
+  <div class="movie">
+    ${html}
+  </div>
+  <button class="btn" id="reset-btn">Go Again</button>
+  `
+  document.getElementById("reset-btn").addEventListener("click", () =>{
+  questionsPage.classList.remove("hidden")
+  answerPage.classList.add("hidden")
+})
+
+}
+
+
+// resize textareas
 
 
 function autoResize(textarea){
@@ -13,7 +75,8 @@ function fitToplacehodler(textarea){
   textarea.value = original
 }
 
-textAreas.forEach((textarea) => {
+document.fonts.ready.then(
+  textAreas.forEach((textarea) => {
   if(textarea.value){
     autoResize(textarea)
   }else{
@@ -28,21 +91,5 @@ textAreas.forEach((textarea) => {
     }
   })
 })
+)
 
-
-searchbtn.addEventListener("click", (e) =>{
-  e.preventDefault()
-  handleSearch()
-})
-
-async function handleSearch(){
-  const searchQuery= searchInput.value
-
-  const response = await fetch("/api/search", {
-    method: "POST",
-    headers: { "Content-Type": "application/json"},
-    body: JSON.stringify({searchQuery: searchQuery})
-  })
-  const data = await response.json()
-  console.log(data)
-}
