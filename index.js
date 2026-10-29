@@ -1,6 +1,33 @@
-const searchInput = document.getElementById("search-input")
-const searchbtn =  document.getElementById("btn")
+const textAreas = document.querySelectorAll("textarea")
 
+
+function autoResize(textarea){
+  textarea.style.height = "auto"
+  textarea.style.height = textarea.scrollHeight + "px"
+}
+
+function fitToplacehodler(textarea){
+  const original = textarea.value
+  textarea.value = textarea.placeholder
+  autoResize(textarea)
+  textarea.value = original
+}
+
+textAreas.forEach((textarea) => {
+  if(textarea.value){
+    autoResize(textarea)
+  }else{
+    fitToplacehodler(textarea)
+  }
+
+  textarea.addEventListener("input", () =>{
+    if(textarea.value){
+      autoResize(textarea)
+    }else{
+      fitToplacehodler(textarea)
+    }
+  })
+})
 
 
 searchbtn.addEventListener("click", (e) =>{

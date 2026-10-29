@@ -3,13 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+    <title>Pop Choice | Movie suggester</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form>
-        <input type="text" required placeholder="Enter film" id="search-input">
-        <button type="submit" id="btn">Search</button>
-    </form>
+    <header>
+        <img class="app-logo" src="images/logo.png" alt="Pop Choice popcorn mascot">
+        <h1 class="app-title">PopChoice</h1>
+    </header>
+
+    <main>
+        <section class="container" id="form-page">
+            <form class="questions">
+                <div class="question"> 
+                    <label for="fav-movie">What’s your favorite movie and why?</label>
+                    <textarea 
+                    placeholder="The Shawshank Redemption&#10;Because it taught me to never give up hope&#10;no matter how hard life gets"
+                    id="fav-movie"></textarea>
+                </div>
+
+                <div class="question"> 
+                    <label 
+                    for="release">Are you in the mood for something
+                    new or a classic?</label>
+                    <textarea 
+                    placeholder="I want to watch movies that were released after 1990"
+                    id="release"></textarea>
+                </div>
+
+                <div class="question"> 
+                    <label 
+                    for="fav-movie">
+                    Do you wanna have fun or do you want something serious?
+                    </label>
+                    <textarea 
+                    placeholder="I want to watch something stupid and fun"
+                    id="desire"></textarea>
+                </div>
+
+                <button type="submit" id="submit-btn" class="btn">Let's Go</button>
+            </form>
+        </section>
+        <section class="container hidden" id="answer-page">
+            <div class="movie">
+                <h2 class="movie-title">School of Rock (2009)</h2>
+                <p class="movie-text">A fun and stupid movie about a wannabe rocker turned fraud substitute teacher forming a rock band with his students to win the Battle of the Bands</p>
+            </div>
+            <button class="btn" id="reset-btn">Go Again</button>
+        </section>
+    </main>
+
     <script src="index.js" type="module"></script>
 </body>
 </html>
